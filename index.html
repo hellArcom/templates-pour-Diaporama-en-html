@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Présentation de Stage</title>
-
+    <title>Présentation</title>
     <style>
         /* Variables CSS */
         :root {
@@ -14,7 +13,6 @@
             --transition-duration: 0.8s;
             --transition-easing: cubic-bezier(0.77, 0, 0.175, 1);
         }
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -28,7 +26,6 @@
             overflow: hidden;
             perspective: 1000px;
         }
-
         .slideshow-container {
             width: 80%;
             max-width: 1000px;
@@ -38,7 +35,6 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
             border-radius: 10px;
         }
-
         .slide {
             position: absolute;
             top: 0;
@@ -57,23 +53,20 @@
             z-index: 1;
         }
 
-        /* Classes utilitaires pour les transitions */
+        /* Classes pour les transitions */
         .slide.active {
             opacity: 1;
             transform: translateX(0) scale(1) rotateY(0deg);
             z-index: 2;
         }
-
         .slide.previous {
             transform: translateX(-100%) scale(0.8) rotateY(-15deg);
             opacity: 0;
         }
-
         .slide.next {
             transform: translateX(100%) scale(0.8) rotateY(15deg);
             opacity: 0;
         }
-
         /* Styles pour le texte */
         .slide h1 {
             font-size: 2.8em;
@@ -84,12 +77,10 @@
             transform: translateY(20px);
             transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
         }
-
         .slide.active h1 {
             opacity: 1;
             transform: translateY(0);
         }
-
         .slide p {
             font-size: 1.3em;
             line-height: 1.6;
@@ -100,12 +91,10 @@
             transform: translateY(20px);
             transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
         }
-
         .slide.active p {
             opacity: 1;
             transform: translateY(0);
         }
-
         /* Styles pour les images */
         .slide img {
             max-width: 80%;
@@ -121,12 +110,10 @@
             opacity: 1;
             transform: scale(1);
         }
-
         /* Styles pour la diapositive active */
         .slide.active {
             background-color: rgba(30, 30, 30, 0.9);
         }
-
         .slide.active::before {
             content: '';
             position: absolute;
@@ -165,37 +152,39 @@
     </style>
 </head>
 <body>
-
     <div class="slideshow-container" role="region" aria-label="Diaporama">
         <div class="slide active" aria-label="Diapositive 1">
             <h1>Bonjour</h1>
-            <p>Présentation de mon stage</p>
+            <p>Diapo1</p>
         </div>
         <div class="slide" aria-label="Diapositive 2">
-            <h1>Mon Entreprise</h1>
+            <h1>Diapo2</h1>
             <img src="placeholder.jpg" alt="Entreprise">
-            <p>Description de l'entreprise et de son activité.</p>
+            <p>Diapo2</p>
         </div>
         <div class="slide" aria-label="Diapositive 3">
-            <h1>Mes Missions</h1>
-            <p>Détails sur les missions qui m'ont été confiées.</p>
+            <h1>Diapo3</h1>
+            <p>Diapo3</p>
         </div>
         <div class="slide" aria-label="Diapositive 4">
-            <h1>Technologies Utilisées</h1>
-            <p>Liste des technologies et outils utilisés durant le stage.</p>
+            <h1>Diapo4</h1>
+            <p>Diapo4</p>
         </div>
         <div class="slide" aria-label="Diapositive 5">
-            <h1>Conclusion</h1>
-            <p>Bilan et perspectives.</p>
+            <h1>Diapo5</h1>
+            <p>Diapo5</p>
         </div>
         <div class="slide" aria-label="Diapositive 6">
-            <h1>Questions ?</h1>
-            <p>Merci de votre attention !</p>
+            <h1>Diapo6</h1>
+            <p>fin</p>
         </div>
         <div class="slide-counter">1/6</div>
     </div>
-
     <script>
+
+          /////////////////////////////////
+         //// Pour les diapositives   //// 
+        /////////////////////////////////
         const slides = document.querySelectorAll('.slide');
         const slideCounter = document.querySelector('.slide-counter');
         let currentSlide = 0;
@@ -237,21 +226,27 @@
             switch (event.code) {
                 case 'Space':
                 case 'ArrowRight':
+                case 'Enter':
+                case 'ArrowDown':
+                case 'click':
                     nextSlide();
                     break;
                 case 'ArrowLeft':
+                case 'ArrowUp':
                     previousSlide();
                     break;
             }
         });
+        document.addEventListener("click", nextSlide);
 
-        showSlide(currentSlide);
+   
 
 
         /////////////////////////////////
         //// Animation des particules ///
         /////////////////////////////////
 
+        // Paramètres avec varialbes
         const particleCount = 150;
         const particleSize = 0.8;
         const lineThickness = 0.5;
@@ -259,6 +254,8 @@
         const particlesArray = [];
         const canvas = document.createElement("canvas");
         const ctx = canvas.getContext("2d");
+
+        // Création du canvas
         document.body.appendChild(canvas);
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -266,13 +263,16 @@
         canvas.style.top = "0";
         canvas.style.left = "0";
         canvas.style.zIndex = "-1";
-
+    
+        // Fonction pour le redimensionnement
         const resizeHandler = () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         };
+        
         window.addEventListener("resize", resizeHandler);
 
+        // Fonction pour créer une particule
         class Particle {
             constructor(x, y) {
                 this.x = x;
@@ -282,12 +282,14 @@
                 this.speedX = (Math.random() - 0.5) * 0.8;
                 this.speedY = (Math.random() - 0.5) * 0.8;
             }
+            // Fonction pour mettre à jour la position de la particule
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
                 if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
                 if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
             }
+            // Fonction pour dessiner la particule
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -295,7 +297,7 @@
                 ctx.fill();
             }
         }
-
+        // Fonction pour dessiner les lignes entre les particules
         function drawLines() {
             for (let i = 0; i < particlesArray.length; i++) {
                 const particle1 = particlesArray[i];
@@ -316,13 +318,15 @@
             }
         }
 
+        // Fonction pour initialiser les particules
         function initParticles() {
             for (let i = 0; i<particleCount; i++) {
                 const x = Math.random() * canvas.width;
                 const y = Math.random() * canvas.height;
                 particlesArray.push(new Particle(x, y));
-            }}
-        
+            }
+        }
+            // Fonction pour animer les particules
             function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             for (const particle of particlesArray) {
@@ -332,13 +336,14 @@
             drawLines();
             requestAnimationFrame(animate);
         }
-
+         
+          /////////////////////////////////
+         ////// Appel des fonction  //////
+        /////////////////////////////////
         initParticles();
         animate();
+        showSlide(currentSlide);
         
-
-        document.addEventListener("click", nextSlide);
     </script>
-
 </body>
 </html>
