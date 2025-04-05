@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+
     <title>Présentation</title>
 </head>
 <body>
@@ -11,86 +16,104 @@
         <img src="logo-parametre.png" alt="Paramètres" style="width: 30px; height: 30px;">
     </button>
     <!--Debut du menue paramètre-->
-<div id="menuParametres">
-    <h2>Paramètres</h2>
-    <ul>
-        <h2>Commande Vocal : </h2>
+    <div id="menuParametres">
+        <h2>Paramètres</h2>
         <ul>
-            <li>
-                <label for="toggleVoiceCommand">Activer commande vocale</label>
-                <input type="checkbox" id="toggleVoiceCommand">
-            </li>  
+            <h2>Commande Vocal : </h2>
+            <ul>
+                <li>
+                    <label for="toggleVoiceCommand">Activer commande vocale</label>
+                    <input type="checkbox" id="toggleVoiceCommand">
+                </li>  
+            </ul>
+            <h2>Paramètre des Particule</h2>
+            <ul>
+                <li>
+                    <label for="particleCount">Nombre de particules</label>
+                    <input type="number" id="particleCount" value="150" min="50" max="500">
+                </li>
+                <li>
+                    <label for="particleSize">Taille des particules</label>
+                    <input type="number" id="particleSize" value="0.8" min="0.1" max="5" step="0.1">
+                </li>
+                <li>
+                    <label for="lineThickness">Épaisseur des lignes</label>
+                    <input type="number" id="lineThickness" value="0.5" min="0.1" max="2" step="0.1">
+                </li>
+                <li>
+                    <label for="maxLineDistance">Distance maximale des lignes</label>
+                    <input type="number" id="maxLineDistance" value="120" min="50" max="300">
+                </li>
+                <li>
+                    <label for="particleColor">Couleur des particules</label>
+                    <input type="color" id="particleColor" value="#00aa99">
+                </li>
+            </ul>
+            <h2>Paramètre du thème</h2>
+            <ul>
+                <li>
+                    <label for="mainBgColor">Couleur de fond</label>
+                    <input type="color" id="mainBgColor" value="#1e1e1e">
+                </li>
+                <li>
+                    <label for="textColor">Couleur du texte</label>
+                    <input type="color" id="textColor" value="#f0f0f0">
+                </li>
+                <li>
+                    <label for="accentColor">Couleur d'accentuation</label>
+                    <input type="color" id="accentColor" value="#64b5f6">
+                </li>
+            </ul>
+            <button id="fermerMenu">Fermer</button>
         </ul>
-        <h2>Paramètre des Particule</h2>
-        <ul>
-            <li>
-                <label for="particleCount">Nombre de particules</label>
-                <input type="number" id="particleCount" value="150" min="50" max="500">
-            </li>
-            <li>
-                <label for="particleSize">Taille des particules</label>
-                <input type="number" id="particleSize" value="0.8" min="0.1" max="5" step="0.1">
-            </li>
-            <li>
-                <label for="lineThickness">Épaisseur des lignes</label>
-                <input type="number" id="lineThickness" value="0.5" min="0.1" max="2" step="0.1">
-            </li>
-            <li>
-                <label for="maxLineDistance">Distance maximale des lignes</label>
-                <input type="number" id="maxLineDistance" value="120" min="50" max="300">
-            </li>
-            <li>
-                <label for="particleColor">Couleur des particules</label>
-                <input type="color" id="particleColor" value="#00aa99">
-            </li>
-        </ul>
-        <h2>Paramètre du thème</h2>
-        <ul>
-            <li>
-                <label for="mainBgColor">Couleur de fond</label>
-                <input type="color" id="mainBgColor" value="#1e1e1e">
-            </li>
-            <li>
-                <label for="textColor">Couleur du texte</label>
-                <input type="color" id="textColor" value="#f0f0f0">
-            </li>
-            <li>
-                <label for="accentColor">Couleur d'accentuation</label>
-                <input type="color" id="accentColor" value="#64b5f6">
-            </li>
-        </ul>
-        <button id="fermerMenu">Fermer</button>
-    </ul>
 
-</div>
-<!--Fin du menu de paramètre-->
+    </div>
+    <!--Fin du menu de paramètre-->
 
     <!--Debut des slide-->
     <div class="slideshow-container" role="region" aria-label="Diaporama">
         <div class="slide active" aria-label="Diapositive 1">
             <h1>Bonjour</h1>
-            <p>Diapo1</p>
+            <p>Bienvenue sur le diaporamat exemple ! </p>
         </div>
         <div class="slide" aria-label="Diapositive 2">
-            <h1>Diapo2</h1>
+            <h1>Un image en exemple !</h1>
             <img src="https://cdn.discordapp.com/avatars/1075766804875583560/94d1d42d2a2bea1e31ec054ec7fbd0fd.webp?size=1024" alt="C'est une image.">
-            <p>Diapo2</p>
+            <p>Ceci est un super photo de profile avec même de la transparence voilà c'est cool ! </p>
         </div>
         <div class="slide" aria-label="Diapositive 3">
-            <h1>Diapo3</h1>
-            <p>Diapo3</p>
+            <h1>Ce diaporamat est en :</h1>
+            <h2 style="align-self: self-start; margin-left: 40%;">-> HTML</h2></li>
+            <h2 style="align-self: self-start; margin-left: 40%;">-> CSS</h2></li>
+            <h2 style="align-self: self-start; margin-left: 40%;">-> JavaScript</h2></li>
         </div>
         <div class="slide" aria-label="Diapositive 4">
-            <h1>Diapo4</h1>
-            <p>Diapo4</p>
+            <h1>Ceci est la Diapositive numéro 4</h1>
+            <p>On peut même mettre des API !</p>
+            <div id="map" style="height: 50%; width: 50%;"></div>
+            <script>
+                // Initialisation de la carte centrée sur un point spécifique
+                var map = L.map('map').setView([48.8566, 2.3522], 12); // Exemple : Paris (latitude, longitude)
+
+                // Ajouter une couche de carte OpenStreetMap
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+                }).addTo(map);
+
+                // Ajouter un marqueur au point
+                L.marker([48.8566, 2.3522]).addTo(map)
+                .bindPopup('ICI')
+                .openPopup();
+            </script>
+
         </div>
         <div class="slide" aria-label="Diapositive 5">
-            <h1>Diapo5</h1>
-            <p>Diapo5</p>
+            <h1>Un problème....</h1>
+            <p>Comme vous avez constater les API sont parfoit pas pratique car si on fait un clique ça passe a la Diapositivesuivante mais c'est faisable !</p>
         </div>
         <div class="slide" aria-label="Diapositive 6">
-            <h1>Diapo6</h1>
-            <p>fin</p>
+            <h1>Plut tard ???</h1>
+            <p>Je voudrais faire un interface pour pas avoir besoin de coder pour que même les débutant puisse l'utiliser mais le problème c'est que c'est beaucoup moin simple que ça en a l'aire et que je suit pas vraiment très doué en JavaSript :/ <br> Bonne journé <br> c'est déjà la fin du diaporamt :/</p>
         </div>
         <div class="slide-counter">1/6</div>
     </div>
