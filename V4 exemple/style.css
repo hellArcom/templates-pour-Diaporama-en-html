@@ -153,6 +153,7 @@ body {
     border: none;
     cursor: pointer;
     z-index: 1000;
+    opacity: 10%;
 }
 
 #menuParametres {
