@@ -161,11 +161,13 @@ body {
     right: -400px;
     width: 300px;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(0, 255, 221, 0.1);
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
     transition: right 0.5s ease;
     padding: 30px;
     z-index: 999;
+    overflow-y: auto;
+
 }
 
 #menuParametres h2 {
@@ -181,3 +183,16 @@ body {
 #menuParametres li {
     margin-bottom: 15px;
 }
+
+#menuParametres button {
+    background-color: rgba(0, 255, 221, 0.5);
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#menuParametres ul ul li {
+    margin-left: 20px;
+}
+
